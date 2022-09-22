@@ -171,6 +171,14 @@ module.exports = function (webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
+      let lessOptions = (preProcessor === 'less-loader') ? {lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
+        modifyVars: {
+          'primary-color': '#1DA57A',
+          'link-color': '#1DA57A',
+          'border-radius-base': '2px',
+        },
+        javascriptEnabled: true,
+      },} : {};
       loaders.push(
         {
           loader: require.resolve('resolve-url-loader'),
@@ -183,6 +191,7 @@ module.exports = function (webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
+            ...lessOptions,
           },
         }
       );
@@ -791,7 +800,7 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
-        new WebpackBundleAnalyzer()
+        new WebpackBundleAnalyzer(),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter

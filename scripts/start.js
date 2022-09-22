@@ -33,7 +33,8 @@ const configFactory = require('../config/webpack.config');
 const createDevServerConfig = require('../config/webpackDevServer.config');
 const getClientEnvironment = require('../config/env');
 const react = require(require.resolve('react', { paths: [paths.appPath] }));
-
+// console.log(config.module.rules[1].oneOf[10].use[1].options.lessOptions)
+// process.exit(1);
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
@@ -80,6 +81,8 @@ checkBrowsers(paths.appPath, isInteractive)
     }
 
     const config = configFactory('development');
+    // console.log(config.module.rules[1].oneOf[10].use);
+    // delete config.module.rules[1].oneOf[10].use[1].options.lessOptions;
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
 

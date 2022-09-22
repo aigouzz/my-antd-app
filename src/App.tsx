@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, DatePicker } from 'antd'
 import { Header } from './components/Header'
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Button type='primary'>点击</Button>
+      <DatePicker></DatePicker>
     </div>
   );
 }
