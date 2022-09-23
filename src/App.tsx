@@ -1,12 +1,9 @@
-import { Button, DatePicker } from 'antd'
-import { Header } from './components/Header'
+import { Routers } from './router/index';
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Button type='primary'>点击</Button>
-      <DatePicker></DatePicker>
+      <Routers></Routers>
     </div>
   );
 }
